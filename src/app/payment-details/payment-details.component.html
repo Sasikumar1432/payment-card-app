@@ -1,0 +1,48 @@
+<div class="row mt-5">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h2 class="mb-4">Payment Details</h2>
+      <app-payment-detail-form></app-payment-detail-form>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h2 class="mb-4">List of Payments</h2>
+      <div class="table-responsive">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>Card Owner Name</th>
+              <th>Card Number</th>
+              <th>Expiration Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pay of paymentService.list">
+              <td>{{ pay.cardOwnerName }}</td>
+              <td>{{ pay.cardNumber }}</td>
+              <td>{{ pay.expirationDate }}</td>
+              <td class="text-center">
+                <div class="btn-group" role="group">
+                  <button
+                    class="btn btn-danger btn-sm me-2"
+                    (click)="onDelete(pay.paymentId)"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <button
+                    class="btn btn-warning btn-sm"
+                    (click)="populateForm(pay)"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
