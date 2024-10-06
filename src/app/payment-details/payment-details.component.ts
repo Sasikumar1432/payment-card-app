@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PaymentDetailService } from '../shared/payment-detail.service';
 import { ToastrService } from 'ngx-toastr';
 import { PaymentDetail } from '../shared/payment-detail';
@@ -8,7 +8,7 @@ import { PaymentDetail } from '../shared/payment-detail';
   templateUrl: './payment-details.component.html',
   styleUrls: ['./payment-details.component.css'],
 })
-export class PaymentDetailsComponent implements OnInit {
+export class PaymentDetailsComponent implements OnInit, OnDestroy {
   constructor(
     public paymentService: PaymentDetailService,
     private toastr: ToastrService
@@ -35,4 +35,5 @@ export class PaymentDetailsComponent implements OnInit {
       });
     }
   }
+  ngOnDestroy() {}
 }
